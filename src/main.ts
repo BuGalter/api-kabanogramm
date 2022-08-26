@@ -9,7 +9,6 @@ async function bootstrap() {
     .setTitle('API Kabanogramm')
     .setDescription('The API messenger Kabanogramm description')
     .setVersion('1.0')
-    .addTag('kabanogramm')
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
