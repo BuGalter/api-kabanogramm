@@ -23,7 +23,8 @@ following command in the terminal.
 In the terminal run:
 
 ```shell
-$npm install
+# install dependencies
+$ npm install
 ```
 
 ## Available Scripts
@@ -56,9 +57,7 @@ $ npm run test:cov
 
 ## CHANGELOG HISTORY
 
-[CHANGELOG](https://github.com/REPOSITORY_NAME/PROJECT_NAME/blob/develop/CHANGELOG.md)
-
-### link to changelog
+[CHANGELOG](https://github.com/BuGalter/api-kabanogramm/blob/master/CHANGELOG.md)
 
 ## Authors
 
