@@ -1,8 +1,14 @@
-import { IsNotEmpty, IsNumber, IsString, Length } from 'class-validator';
+import {
+  IsEmail,
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+  Length,
+  MaxLength,
+} from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
-// Валидация происходит только по объявленым ключам, ругается если чего то не хватает,
-// лишние можно, решается добавление в настройки валидации whitelist:true main.ts
+// лишние можно отсекает добавление в настройки валидации whitelist:true main.ts
 export class CreateUserDto {
   @ApiProperty({ description: 'User name', nullable: false })
   @IsString()
@@ -12,6 +18,7 @@ export class CreateUserDto {
   @ApiProperty({ description: 'User email', nullable: false })
   @IsString()
   @IsNotEmpty()
+  @IsEmail()
   readonly email: string;
 
   @ApiProperty({ description: 'User password', nullable: false })
@@ -25,13 +32,21 @@ export class CreateUserDto {
   @IsNotEmpty()
   readonly age: number;
 
-  @ApiProperty({ description: 'User life status', nullable: true })
-  @Length(0, 10)
+  @ApiProperty({
+    description: 'User life status',
+    nullable: false,
+  })
   @IsString()
+  @IsNotEmpty()
+  @MaxLength(15)
   readonly status: string;
 
-  @ApiProperty({ description: 'Info about user', nullable: true })
-  @Length(0, 50)
+  @ApiProperty({
+    description: 'Info about user',
+    nullable: false,
+  })
   @IsString()
+  @IsNotEmpty()
+  @MaxLength(100)
   readonly about: string;
 }
