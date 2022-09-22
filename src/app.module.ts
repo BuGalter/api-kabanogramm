@@ -1,16 +1,19 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import dbConfig from './config/dbConfig';
 import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: '0.0.0.0',
-      port: 3306,
-      username: 'kaban',
-      password: 'kaban',
-      database: 'kabanogramm',
+      type: dbConfig().type,
+      host: dbConfig().host,
+      port: dbConfig().port,
+      username: dbConfig().username,
+      password: dbConfig().password,
+      database: dbConfig().database,
       autoLoadEntities: true,
       synchronize: true,
     }),
