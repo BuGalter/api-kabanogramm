@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import dbConfig from './config/dbConfig';
+import dbConfig from './config/db-config';
 import { UsersModule } from './users/users.module';
 import { ChatsModule } from './chats/chats.module';
 
