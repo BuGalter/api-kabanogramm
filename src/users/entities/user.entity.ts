@@ -3,9 +3,11 @@ import {
   BeforeUpdate,
   Column,
   Entity,
+  ManyToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import * as bcrypt from 'bcrypt';
+import { Chat } from '../../chats/entities/chat.entity';
 
 @Entity()
 export class User {
@@ -36,4 +38,7 @@ export class User {
     const salt = await bcrypt.genSalt(10);
     this.password = await bcrypt.hash(this.password, salt);
   }
+
+  @ManyToMany(() => Chat, (chat) => chat.users)
+  chats: Chat[];
 }
