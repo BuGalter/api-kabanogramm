@@ -11,7 +11,6 @@ import { ApiTags } from '@nestjs/swagger';
 import { ChatsService } from './chats.service';
 import { CreateChatDto } from './dto/create-chat.dto';
 import { UpdateChatDto } from './dto/update-chat.dto';
-import { CreateGroupDto } from './dto/create-group.dto';
 
 @Controller('chats')
 @ApiTags('chats')
@@ -21,11 +20,6 @@ export class ChatsController {
   @Post()
   create(@Body() createChatDto: CreateChatDto) {
     return this.chatService.create(createChatDto);
-  }
-
-  @Post('/group')
-  createGroup(@Body() createGroupDto: CreateGroupDto) {
-    return this.chatService.createGroup(createGroupDto);
   }
 
   @Get()
